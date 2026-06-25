@@ -1,108 +1,37 @@
-import { Search, SlidersHorizontal, Send, CheckCircle } from 'lucide-react'
-
-const steps = [
-  {
-    icon: Search,
-    step: '01',
-    title: 'Search by stack',
-    description:
-      'Filter jobs by the exact technologies you use — React, Go, Kubernetes, and hundreds more. No more generic keyword searches.',
-    color: 'brand',
-  },
-  {
-    icon: SlidersHorizontal,
-    step: '02',
-    title: 'Refine your match',
-    description:
-      'Narrow down by salary range, location, remote preference, company size, and job type to find roles that truly fit.',
-    color: 'violet',
-  },
-  {
-    icon: Send,
-    step: '03',
-    title: 'Apply with ease',
-    description:
-      'One-click applications for many roles. Your profile does the talking — no cover letter required unless you want to.',
-    color: 'indigo',
-  },
-  {
-    icon: CheckCircle,
-    step: '04',
-    title: 'Get hired faster',
-    description:
-      'Companies on StackHired are actively hiring. Expect responses within days, not weeks. Your dream stack, your dream job.',
-    color: 'emerald',
-  },
-]
-
-const colorMap: Record<string, { bg: string; icon: string; number: string }> = {
-  brand: {
-    bg: 'bg-brand-50',
-    icon: 'text-brand-600',
-    number: 'text-brand-200',
-  },
-  violet: {
-    bg: 'bg-violet-50',
-    icon: 'text-violet-600',
-    number: 'text-violet-200',
-  },
-  indigo: {
-    bg: 'bg-indigo-50',
-    icon: 'text-indigo-600',
-    number: 'text-indigo-200',
-  },
-  emerald: {
-    bg: 'bg-emerald-50',
-    icon: 'text-emerald-600',
-    number: 'text-emerald-200',
-  },
-}
+import { steps } from '@/data/rolla'
+import Button from '@/components/ui/Button'
+import { ArrowRight } from 'lucide-react'
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-brand-600 uppercase tracking-widest mb-3">
-            How It Works
-          </p>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Land your next role in 4 steps
-          </h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-            StackHired is built for engineers who know their worth and know their stack.
-          </p>
-        </div>
+    <section className="bg-cream py-20 md:py-28">
+      <div className="container-page">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <p className="text-sm font-semibold text-brand-600">How it works</p>
+            <h2 className="mt-2 font-display text-3xl md:text-4xl font-bold text-ink">
+              From offer to onboarded in four steps
+            </h2>
+            <p className="mt-4 text-lg text-ink-soft">
+              Rolla replaces months of entity setup, legal review and payroll
+              wrangling with a single, guided workflow.
+            </p>
+            <Button href="/how-it-works" className="mt-7">
+              Walk through the flow <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step) => {
-            const colors = colorMap[step.color]
-            const Icon = step.icon
-
-            return (
-              <div key={step.step} className="relative">
-                <div className={`${colors.bg} rounded-2xl p-6 h-full`}>
-                  <div className="mb-4">
-                    <span className={`text-6xl font-black ${colors.number} select-none`}>
-                      {step.step}
-                    </span>
-                  </div>
-                  <div className={`w-10 h-10 rounded-xl ${colors.bg} border border-current/10 flex items-center justify-center mb-4`}>
-                    <Icon className={`w-5 h-5 ${colors.icon}`} />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
-                </div>
-                {/* Connector arrow for desktop */}
-                {step.step !== '04' && (
-                  <div className="hidden lg:flex absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <div className="w-8 h-0.5 bg-gray-200" />
-                    <div className="w-0 h-0 border-t-4 border-b-4 border-l-4 border-t-transparent border-b-transparent border-l-gray-300 -mt-1" />
-                  </div>
-                )}
-              </div>
-            )
-          })}
+          <ol className="relative space-y-8 border-l border-brand-100 pl-8">
+            {steps.map((s, i) => (
+              <li key={s.title} className="relative">
+                <span className="absolute -left-[2.6rem] grid h-8 w-8 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-white shadow-soft">
+                  {i + 1}
+                </span>
+                <h3 className="text-lg font-bold text-ink">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
