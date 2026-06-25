@@ -4,31 +4,41 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
 export const viewport: Viewport = {
-  themeColor: '#0D0D0D',
+  themeColor: '#5b3fe8',
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://getrolla.com'),
   title: {
-    default: 'Stack Hired — Where Tech Talent Meets Opportunity',
-    template: '%s | Stack Hired',
+    default: 'Rolla — Hire anyone, anywhere. Employer of Record & global hiring',
+    template: '%s | Rolla',
   },
   description:
-    'AI-powered recruitment platform connecting tech talent with top companies. Video profiles, GitHub integration, Slack communication, and intelligent matching.',
+    'Rolla is the global hiring platform for startups and SMBs. Hire and pay employees and contractors in 190+ countries with Employer of Record, H-1B visa alternatives, and global mobility — onboard in minutes, fully compliant.',
   keywords: [
-    'tech jobs',
-    'software engineer jobs',
-    'developer jobs',
-    'AI recruitment',
-    'remote jobs',
-    'GitHub jobs',
-    'tech hiring',
+    'employer of record',
+    'EOR',
+    'global hiring',
+    'hire Canadian tech talent',
+    'H-1B alternative',
+    'global mobility visa',
+    'pay international contractors',
+    'global payroll',
+    'hire remote employees',
   ],
   openGraph: {
-    title: 'Stack Hired — Where Tech Talent Meets Opportunity',
+    title: 'Rolla — Hire anyone, anywhere',
     description:
-      'AI-powered recruitment platform built for the way tech teams work today.',
+      'The global hiring platform for startups and SMBs. EOR in 190+ countries, H-1B alternatives, and contractor payments — onboard in minutes.',
     type: 'website',
-    siteName: 'Stack Hired',
+    siteName: 'Rolla',
+    url: 'https://getrolla.com',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rolla — Hire anyone, anywhere',
+    description:
+      'EOR in 190+ countries, H-1B alternatives, and contractor payments — onboard in minutes.',
   },
 }
 
@@ -39,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col" style={{ backgroundColor: '#0D0D0D' }}>
+      <body className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

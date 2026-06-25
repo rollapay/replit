@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    --background: #0D0D0D;
-    --surface: #1A1A2E;
-    --border: rgba(255, 255, 255, 0.08);
+    --background: #ffffff;
+    --cream: #faf9ff;
+    --ink: #0c0a1f;
   }
 
   * {
@@ -20,60 +20,46 @@
   }
 
   body {
-    background-color: #0D0D0D;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: var(--ink);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  ::selection {
-    background-color: rgba(124, 58, 237, 0.3);
-    color: #fff;
+  h1, h2, h3, h4 {
+    font-family: 'Sora', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0D0D0D;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(124, 58, 237, 0.4);
-    border-radius: 9999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(124, 58, 237, 0.7);
+  ::selection {
+    background-color: rgba(91, 63, 232, 0.18);
+    color: var(--ink);
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-violet-200 to-violet-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-700 via-brand-500 to-accent-500;
   }
 
-  .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
+  .container-page {
+    @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
   }
 
   .card-hover {
     @apply transition-all duration-200;
   }
-
   .card-hover:hover {
-    border-color: rgba(124, 58, 237, 0.3) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(76, 48, 204, 0.14);
+    border-color: rgba(91, 63, 232, 0.25);
   }
 
-  .hero-glow {
-    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
-  }
-
-  .surface-card {
-    background-color: #1A1A2E;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(12, 10, 31, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(12, 10, 31, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 }
